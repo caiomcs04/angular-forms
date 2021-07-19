@@ -29,4 +29,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  teste(){
+    return true
+  }
 }
