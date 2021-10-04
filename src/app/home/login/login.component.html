@@ -28,13 +28,19 @@
       required
     />
     <app-menssage
-    class="ml-2"
-    menssage="Senha Obrigatória"
-    *ngIf="passwordInput.invalid  && passwordInput.touched"
-  ></app-menssage>
+      class="ml-2"
+      menssage="Senha Obrigatória"
+      *ngIf="passwordInput.invalid && passwordInput.touched"
+    ></app-menssage>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid ">Login</button>
+  <button
+    type="submit"
+    class="btn btn-primary btn-block"
+    [disabled]="loginForm.invalid"
+  >
+    Login
+  </button>
 </form>
 
 <p>Não é um usuário? <a [routerLink]="['newuser']">Cadastre-se</a></p>
