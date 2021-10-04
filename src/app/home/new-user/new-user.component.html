@@ -1,17 +1,71 @@
 <h4 class="text-center mt-4">Registre-se e mostre seu pet ao mundo</h4>
 
-<form class="form mt-4">
+<!--O formGroup precisa que importe o ReactiveFormsModule-->
+<form class="form mt-4" [formGroup]="newUserForm" (submit)="register()">
   <div class="form-group">
-    <input placeholder="E-mail" class="form-control">
+    <input placeholder="E-mail" class="form-control" formControlName="email" />
+    <app-menssage
+      class="ml-2"
+      menssage="Email Obrigatório"
+      *ngIf="
+        newUserForm.get('email')?.errors?.required &&
+        newUserForm.get('email')?.touched
+      "
+    ></app-menssage>
+    <app-menssage
+      class="ml-2"
+      menssage="Email Inválido"
+      *ngIf="
+        newUserForm.get('email')?.errors?.email &&
+        newUserForm.get('email')?.touched
+      "
+    ></app-menssage>
   </div>
   <div class="form-group">
-    <input placeholder="Nome Completo" class="form-control">
+    <input
+      placeholder="Nome Completo"
+      class="form-control"
+      formControlName="fullName"
+    />
+    <app-menssage
+      class="ml-2"
+      menssage="Nome Inválido"
+      *ngIf="
+        newUserForm.get('fullName')?.errors &&
+        newUserForm.get('fullName')?.touched
+      "
+    ></app-menssage>
   </div>
   <div class="form-group">
-    <input placeholder="Usuário" class="form-control">
+    <input
+      placeholder="Usuário"
+      class="form-control"
+      formControlName="userName"
+    />
+    <app-menssage
+    class="ml-2"
+    menssage="Usuário deve ser minúsculo"
+    *ngIf="
+      newUserForm.get('userName')?.errors?.lowercase &&
+      newUserForm.get('userName')?.touched
+    "
+  ></app-menssage>
+  <app-menssage
+  class="ml-2"
+  menssage="Usuário obrigatório"
+  *ngIf="
+    newUserForm.get('userName')?.errors?.required &&
+    newUserForm.get('userName')?.touched
+  "
+></app-menssage>
   </div>
   <div class="form-group">
-    <input type="password" placeholder="Senha" class="form-control">
+    <input
+      type="password"
+      placeholder="Senha"
+      class="form-control"
+      formControlName="password"
+    />
   </div>
 
   <button class="btn btn-primary btn-block">Cadastrar</button>
